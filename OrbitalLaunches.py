@@ -30,6 +30,7 @@ data = {}
 i = 0
 offset = 0
 
+# recoring data locally to count number of launches getting from each table row feom webpage
 while  i < len(trs):
 	if( trs[i].find("td") is not None and (trs[i].find("td").has_attr("rowspan"))):
 		if(trs[i].find("td").has_attr("rowspan")):
@@ -56,6 +57,7 @@ timezone = pytz.timezone('UTC')
 
 f = open("output.csv", "w")
 
+# looping through the all dates in 2019 and writing to csv file
 while start_date <= end_date:
 	if(str(start_date) in data):
 		f.write(str(timezone.localize(start_date).isoformat())+", "+str(data[str(start_date)]))
